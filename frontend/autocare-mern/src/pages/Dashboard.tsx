@@ -4,7 +4,7 @@ import { Box, Typography, Paper, Button } from "@mui/material";
 import { logoutUser } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import AppSnackbar from "../components/AppSnackbar";
-
+import { useAuth } from "../context/AuthContext";
 interface User {
   _id: string;
   username: string;
@@ -19,7 +19,7 @@ const Dashboard = () => {
     severity: "success" as "success" | "error" | "warning" | "info",
   });
   const navigate = useNavigate();
-
+  const { logout } = useAuth();
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -34,6 +34,7 @@ const Dashboard = () => {
   }, []);
   const handleLogout = async () => {
     const res = await logoutUser();
+    logout();
     setSnackbar({
       open: true,
       message: "Logout successful",
