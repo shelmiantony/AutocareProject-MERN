@@ -52,6 +52,7 @@ const loginUser = async (req, res) => {
       _id: currentUser._id,
       username: currentUser.username,
       email: currentUser.email,
+      message: "Login successful",
     });
   }
   return res.status(400).send("Invalid credentials");
