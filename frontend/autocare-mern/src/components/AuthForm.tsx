@@ -36,10 +36,13 @@ const AuthForm = ({
       >
         {title}
       </Typography>
-      <Typography variant="body1" color="color.secondary" sx={{ mb: 4 }}>
-        {" "}
+      <Typography
+        variant="body1"
+        color="text.secondary"
+        sx={{ mb: 4, textAlign: "center" }}
+      >
+        {subtitle}
       </Typography>
-      {subtitle}
       <Box
         component="form"
         onSubmit={handleSubmit(onSubmit)}
@@ -62,6 +65,7 @@ const AuthForm = ({
         )}
         <TextField
           label="Email"
+          type="email"
           {...register("email", {
             required: "Email is required",
           })}
@@ -70,8 +74,9 @@ const AuthForm = ({
         />{" "}
         <TextField
           label="Password"
+          type="password"
           {...register("password", {
-            required: "password is required",
+            required: "Password is required",
           })}
           error={!!errors.password}
           helperText={errors.password?.message as string}
