@@ -1,9 +1,16 @@
 import { Container, Box } from "@mui/material";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import AuthForm from "../components/AuthForm";
 import { loginUser } from "../services/api";
 import AppSnackbar from "../components/AppSnackbar";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+
+interface LoginData {
+  email: string;
+  password: string;
+}
 const Login = () => {
   const navigate = useNavigate();
   const [snackbar, setSnackbar] = useState({
@@ -11,10 +18,13 @@ const Login = () => {
     message: "",
     severity: "success" as "success" | "error" | "warning" | "info",
   });
-  const onSubmit = async (data: any) => {
+
+  const { login } = useAuth();
+  const onSubmit = async (data: LoginData) => {
     try {
       const res = await loginUser(data);
       console.log("res", res);
+      login(res.data);
       setSnackbar({
         open: true,
         message: res.data.message,
