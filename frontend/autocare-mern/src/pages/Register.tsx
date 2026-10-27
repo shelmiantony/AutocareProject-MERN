@@ -1,6 +1,6 @@
 import { Container, Box } from "@mui/material";
 import AuthForm from "../components/AuthForm";
-import { registerUser } from "../api/api";
+import { registerUser } from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AppSnackbar from "../components/AppSnackbar";

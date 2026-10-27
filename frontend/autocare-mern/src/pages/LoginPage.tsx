@@ -1,6 +1,6 @@
 import { Container, Box } from "@mui/material";
 import AuthForm from "../components/AuthForm";
-import { loginUser } from "../api/api";
+import { loginUser } from "../services/api";
 import AppSnackbar from "../components/AppSnackbar";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -21,7 +21,7 @@ const Login = () => {
         severity: "success",
       });
       setTimeout(() => {
-        navigate("/");
+        navigate("/home");
       }, 2000);
     } catch (error: any) {
       setSnackbar({
