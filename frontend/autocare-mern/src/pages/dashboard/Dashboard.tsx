@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { getProfile } from "../services/api";
+import { getProfile } from "../../services/api";
 import { Box, Typography, Paper, Button } from "@mui/material";
-import { logoutUser } from "../services/api";
+import { logoutUser } from "../../services/api";
 import { useNavigate } from "react-router-dom";
-import AppSnackbar from "../components/AppSnackbar";
-import { useAuth } from "../context/AuthContext";
+import AppSnackbar from "../../components/AppSnackbar";
+import { useAuth } from "../../context/AuthContext";
 interface User {
   _id: string;
   username: string;

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginPage from "../pages/LoginPage";
-import Register from "../pages/Register";
-import DashBoard from "../pages/Dashboard";
+import LoginPage from "../pages/auth/LoginPage";
+import Register from "../pages/auth/Register";
+import DashBoard from "../pages/dashboard/Dashboard";
 import PrivateRoute from "../components/PrivateRoute";
 import Sidebar from "../layouts/SideBar";
 const AppRoutes = () => {
