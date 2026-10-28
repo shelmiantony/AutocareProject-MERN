@@ -66,10 +66,7 @@ const Sidebar = () => {
                   <ListItemIcon sx={{ minWidth: 36, color: "inherit" }}>
                     {item.icon}
                   </ListItemIcon>
-                  <ListItemText
-                    primary={item.label}
-                    primaryTypographyProps={{ fontSize: 16, fontWeight: 400 }}
-                  />
+                  <ListItemText primary={item.label} />
                 </ListItemButton>
               </ListItem>
             ))}
