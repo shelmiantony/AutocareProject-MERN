@@ -2,10 +2,10 @@ import { Container, Box } from "@mui/material";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import AuthForm from "../components/AuthForm";
-import { loginUser } from "../services/api";
-import AppSnackbar from "../components/AppSnackbar";
-import { useAuth } from "../context/AuthContext";
+import AuthForm from "../../components/AuthForm";
+import { loginUser } from "../../services/api";
+import AppSnackbar from "../../components/AppSnackbar";
+import { useAuth } from "../../context/AuthContext";
 
 interface LoginData {
   email: string;
