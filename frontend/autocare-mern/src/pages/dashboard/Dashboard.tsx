@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { getProfile } from "../../services/api";
 import { Box, Typography, Paper, Button } from "@mui/material";
+
 import { logoutUser } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import AppSnackbar from "../../components/AppSnackbar";
 import { useAuth } from "../../context/AuthContext";
+import { getProfile } from "../../services/api";
 interface User {
   _id: string;
   username: string;
@@ -32,6 +33,14 @@ const Dashboard = () => {
 
     fetchProfile();
   }, []);
+  const today = new Date();
+  const formatedToday = today.toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  console.log("formatedToday:", formatedToday);
   const handleLogout = async () => {
     const res = await logoutUser();
     logout();
@@ -47,11 +56,33 @@ const Dashboard = () => {
   return (
     <Box p={4}>
       <Paper sx={{ p: 3 }}>
-        <Typography variant="h4">Dashboard</Typography>
+        <Typography
+          variant="overline"
+          sx={{
+            fontWeight: 700,
+            color: "#788492",
+            letterSpacing: 1.2,
+            fontSize: 10,
+          }}
+        >
+          ● &nbsp;{formatedToday}
+        </Typography>
 
-        <Typography>Welcome {user?.username}</Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: 800,
+            letterSpacing: "-1px",
+            mt: 0.4,
+            fontSize: { xs: 22, sm: 27 },
+          }}
+        >
+          Good morning, {user?.username}
+        </Typography>
 
-        <Typography>Email: {user?.email}</Typography>
+        <Typography variant="body2" color="#788492" sx={{ mt: 0.5 }}>
+          Here’s what’s happening at your service center today.
+        </Typography>
         <Button variant="outlined" color="primary" onClick={handleLogout}>
           Logout
         </Button>
