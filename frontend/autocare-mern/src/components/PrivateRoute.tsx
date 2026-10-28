@@ -13,8 +13,10 @@ const PrivateRoute = ({ children }: PrivateRouteProps) => {
     throw new Error("PrivateRoute must be used within AuthProvider");
   }
 
-  const { user } = authContext;
-
+  const { user, loading } = authContext;
+  if (loading) {
+    return null;
+  }
   if (!user) {
     return <Navigate to="/login" replace />;
   }

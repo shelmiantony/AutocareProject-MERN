@@ -53,7 +53,7 @@ const Sidebar = () => {
             p: 2,
           }}
         >
-          <List>
+          <List component="nav" aria-label="workspace" sx={{ px: 1.75, py: 0 }}>
             {navItems.map((item) => (
               <ListItem key={item.path} disablePadding>
                 <ListItemButton
@@ -63,7 +63,9 @@ const Sidebar = () => {
                     backgroundColor: isActive ? "#e3f2fd" : "transparent",
                   })}
                 >
-                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemIcon sx={{ minWidth: 36, color: "inherit" }}>
+                    {item.icon}
+                  </ListItemIcon>
                   <ListItemText primary={item.label} />
                 </ListItemButton>
               </ListItem>
