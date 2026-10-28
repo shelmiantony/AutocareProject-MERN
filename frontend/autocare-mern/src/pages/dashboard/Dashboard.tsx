@@ -40,7 +40,7 @@ const Dashboard = () => {
     month: "long",
     day: "numeric",
   });
-  console.log("formatedToday:", formatedToday);
+
   const handleLogout = async () => {
     const res = await logoutUser();
     logout();
