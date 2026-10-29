@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 import { Box, Typography, Paper, Button } from "@mui/material";
 
-import { logoutUser } from "../../services/api";
-import { useNavigate } from "react-router-dom";
 import AppSnackbar from "../../components/AppSnackbar";
-import { useAuth } from "../../context/AuthContext";
 import { getProfile } from "../../services/api";
 interface User {
   _id: string;
@@ -19,8 +16,7 @@ const Dashboard = () => {
     message: "",
     severity: "success" as "success" | "error" | "warning" | "info",
   });
-  const navigate = useNavigate();
-  const { logout } = useAuth();
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
@@ -40,19 +36,6 @@ const Dashboard = () => {
     month: "long",
     day: "numeric",
   });
-
-  const handleLogout = async () => {
-    const res = await logoutUser();
-    logout();
-    setSnackbar({
-      open: true,
-      message: "Logout successful",
-      severity: "success",
-    });
-    setTimeout(() => {
-      navigate("/login");
-    }, 2000);
-  };
   return (
     <Box p={4}>
       <Paper sx={{ p: 3 }}>
@@ -81,23 +64,9 @@ const Dashboard = () => {
         </Typography>
 
         <Typography variant="body2" color="#788492" sx={{ mt: 0.5 }}>
-          Here’s what’s happening at your service center today.
+          Welcome back! Here's what's happening today.
         </Typography>
-        <Button variant="outlined" color="primary" onClick={handleLogout}>
-          Logout
-        </Button>
       </Paper>
-      <AppSnackbar
-        open={snackbar.open}
-        message={snackbar.message}
-        severity={snackbar.severity}
-        onClose={() =>
-          setSnackbar((prev) => ({
-            ...prev,
-            open: false,
-          }))
-        }
-      />
     </Box>
   );
 };
