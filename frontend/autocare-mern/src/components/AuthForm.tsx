@@ -1,5 +1,6 @@
-import { TextField, Button, Typography, Paper, Box } from "@mui/material";
+import { TextField, Button, Typography, Paper, Box, Link } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { Link as RouterLink } from "react-router-dom";
 interface AuthFormProps {
   title: string;
   subtitle: string;
@@ -84,6 +85,20 @@ const AuthForm = ({
         <Button type="submit" variant="contained" disabled={isSubmitting}>
           {isLogin ? "Login" : "Register"}
         </Button>
+        {!isLogin && (
+          <Typography variant="body2" color="text.secondary" textAlign="center">
+            Already registered?{""}
+            <Link
+              component={RouterLink}
+              to="/login"
+              underline="hover"
+              sx={{ fontWeight: 600 }}
+            >
+              {" "}
+              Login
+            </Link>
+          </Typography>
+        )}
       </Box>
     </Paper>
   );
